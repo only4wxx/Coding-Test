@@ -5,7 +5,6 @@ N = int(input()) # 사람의 수
 left_taller = list(map(int, input().split(' '))) # 자기보다 키가 큰 사람이 왼쪽에 몇 명이 있었는지
 
 order = [ 0 for _ in range(N) ] # 사람의 수만큼의 크기를 가진 리스트 선언 -> 사람들이 줄 서는 위치를 나타낼 리스트임
-index = [ n for n in range(N) ] # 올 수 있는 위치의 인덱스를 요소로 가진 리스트 선언
 
 for n in range(N): # 각 사람들마다 반복
 

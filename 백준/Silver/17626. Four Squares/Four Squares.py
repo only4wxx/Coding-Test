@@ -20,11 +20,10 @@ def find_square(num):
     # print('num: '+str(num), end=' / ')
     # print(max_square)
 
-    min_result = 0
-    for n in range(max_square, max_square//2-1, -1): # 최소 개수를 구함
+    min_result = 1 + find_square(num-max_square**2)
+    for n in range(max_square-1, max_square//2-1, -1): # 최소 개수를 구함
         result_square = find_square(num-n**2)
-        if not min_result: min_result = 1 + result_square
-        elif result_square+1 < min_result: min_result = 1 + result_square
+        if result_square+1 < min_result: min_result = 1 + result_square
     memo[num] = min_result
     return min_result
 

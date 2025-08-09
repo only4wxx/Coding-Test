@@ -20,38 +20,30 @@ public class Main {
         // 1. 문자열 뒤에 A를 추가
         // 2. 문자열 뒤에 B를 추가하고 문자열을 뒤집음
 
-        changeWord();
+        changeWord(T);
+        System.out.println(0);
     }
 
-    public static void changeWord() {
-        int result = 0;
-        Queue<String> nextWord = new LinkedList<>();
-        nextWord.offer(S);
-
-        while (!nextWord.isEmpty()) {
-            String word = nextWord.poll();
-//            System.out.println(word);
-
-            if (word.equals(T)) { // T로 바꿀 수 있는 경우
-                result = 1;
-                break;
-            }
-
-            String wordReverse = "";
-            for (int c = word.length()-1; c >= 0; c--)
-                wordReverse += word.charAt(c);
-
-            if (T.contains(word) || T.contains(wordReverse)) { // 단어를 포함하고 있으면
-                // 문자열 뒤에 A를 추가
-                String addA = word + "A";
-                nextWord.offer(addA);
-
-                // 문자열 뒤에 B를 추가하고 문자열을 뒤집음
-                String addB = "B" + wordReverse;
-                nextWord.offer(addB);
-            }
+    public static void changeWord(String word) {
+        if (word.isEmpty()) return;
+        if (word.equals(S)) {
+            System.out.println(1);
+            System.exit(0);
         }
 
-        System.out.println(result);
+        if (word.charAt(word.length()-1) == 'A') { // 마지막 글자가 A인 경우
+            String temp = "";
+            // 마지막 글자를 뺌
+            for (int i = 0; i < word.length()-1; i++)
+                temp += word.charAt(i);
+            changeWord(temp);
+        }
+        if (word.charAt(0) == 'B') { // 첫번째 글자가 B인 경우
+            String temp = "";
+            // 첫번째 글자를 빼고 뒤집음
+            for (int i = word.length()-1; i > 0; i--)
+                temp += word.charAt(i);
+            changeWord(temp);
+        }
     }
 }

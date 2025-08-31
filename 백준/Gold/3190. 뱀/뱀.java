@@ -1,5 +1,5 @@
-// 12865
-// 평범한 배낭
+// 3190
+// 뱀
 
 import java.awt.print.Pageable;
 import java.io.BufferedReader;
